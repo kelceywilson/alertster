@@ -1,0 +1,30 @@
+.alert-list {
+  background-color: #F0F0F0;
+  width: 500px;
+}
+.alert-div {
+  background-color: white;
+  border: 1px solid black;
+  width: 400px;
+  margin: 10px 30px;
+  padding: 0 10px;
+}
+.alert-type {
+  background-color: lightgreen;
+}
+.button {
+  margin: 15px;
+  border: 1px solid black;
+}
+.error {
+  color: red;
+  border-color: red;
+}
+.nav {
+  margin: 15px;
+}
+
+.nav a:hover, .nav .active {
+  color: #fff;
+  background: #3b80d1;
+}

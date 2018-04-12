@@ -1,4 +1,4 @@
-# cromo_react
+# alertster
 
 Project in progress - using README for planning right now
 
@@ -61,7 +61,7 @@ What is the common owner component?
 ???
 
 check out flux model
-dan abamobrof - videos on egghead, etc.
+dan abramrov - videos on egghead, etc.
 
 ## Figure out data model
 - users (
@@ -89,5 +89,8 @@ dan abamobrof - videos on egghead, etc.
   photo_url text NOT NULL,
   note text
 );
+
+## Create api to add alerts and add users
+
 
 ## Jest for testing?  Enzyme?
