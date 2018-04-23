@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 import AlertsReducer from './alerts_reducer'
 import SelectAlertReducer from './select_alert_reducer'
-import AuthenticationReducer from './authentication'
+import AuthenticationReducer from './authentication_reducer'
+import AuthReducer from './auth_reducer'
 
 // import { FACEBOOK_LOGIN } from '../actions/index'
 // export default function(state = [], action){
@@ -18,6 +19,7 @@ import AuthenticationReducer from './authentication'
 const rootReducer = combineReducers({
   alerts: AlertsReducer,
   authenticated: AuthenticationReducer,
+  auth: AuthReducer,
   selectAlert: SelectAlertReducer,
   form: formReducer
 });

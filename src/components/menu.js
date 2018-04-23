@@ -5,6 +5,44 @@ import { connect } from 'react-redux'
 import { authenticate } from '../actions/index'
 // import Resources from './resources'
 // import requireAuth from './require_authentication'
+
+class Menu extends Component {
+  authButton(){
+    if(this.props.authenticated){
+      return <span>
+        <NavLink to="/signout" className="button">Sign Out</NavLink>
+      </span>
+
+    } else {
+      return [
+        <span key={1}>
+          <NavLink to="/signin">Sign In</NavLink>
+          <NavLink to="/signup">Sign Up</NavLink>
+        </span>
+      ]
+    }
+  }
+
+
+  render() {
+    return (
+      <nav>
+        <div className="nav">
+          <NavLink exact to="/" activeClassName="button">Home</NavLink>
+          <NavLink to="/resources">Resources</NavLink>
+          {this.authButton()}
+        </div>
+      </nav>
+    );
+  }
+}
+
+function mapStateToProps(state){
+  return { authenticated: state.auth.authenticated }
+}
+
+export default connect(mapStateToProps, {authenticate})(Menu)
+
 // const Menu = () => (
 //   <header>
 //     <div className="nav">
@@ -28,35 +66,9 @@ import { authenticate } from '../actions/index'
 // )
 //
 // we can get `from` from this.props.location.state
+// <button onClick={()=>{this.props.authenticate(true)}}>Sign In</button>
+// return <button onClick={()=>{this.props.authenticate(false)}}>Sign Out</button>
 
-class Menu extends Component {
-  authButton(){
-    if(this.props.authenticated){
-      return <button onClick={()=>{this.props.authenticate(false)}}>Sign Out</button>
-    }
-    return <button onClick={()=>{this.props.authenticate(true)}}>Sign In</button>
-  }
-
-
-  render() {
-    return (
-      <nav>
-        <div className="nav">
-          <NavLink exact to="/" activeClassName="button">Home</NavLink>
-          <NavLink to="/resources">Resources</NavLink>
-          <NavLink to="/login">Login</NavLink>
-          {this.authButton()}
-        </div>
-      </nav>
-    );
-  }
-}
-
-function mapStateToProps(state){
-  return { authenticated: state.authenticated }
-}
-//
-export default connect(mapStateToProps, {authenticate})(Menu)
 
 
           // <PrivateRoute path='/resources' component={requireAuth(Resources)} />

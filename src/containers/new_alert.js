@@ -70,8 +70,8 @@ class NewAlert extends Component {
 function validate(values){
   const errors = {}
 
-  if(!values.type){
-    errors.type = "Enter alert type"
+  if(!values.alert_type){
+    errors.alert_type = "Enter alert type"
   }
   if(!values.title){
     errors.title = "Enter a title"

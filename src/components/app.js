@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import requireAuth from './require_authentication'
 import AlertContainer from '../containers/alert_container'
-import Login from './login';
+import Signin from './signin';
 import Menu from './menu'
 import NotFound from './not_found'
 import Resources from './resources'
@@ -18,7 +18,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/" component={AlertContainer}/>
             <Route path="/resources" component={requireAuth(Resources)}/>
-            <Route path="/login" component={Login}/>
+            <Route path="/signin" component={Signin}/>
             <Route component={NotFound}/>
           </Switch>
         </div>
