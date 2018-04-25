@@ -8,10 +8,8 @@ class Signout extends Component {
   }
 
   render() {
-    return <div>Later dude.</div>
+    return <div>See ya later.</div>
   }
 }
-
-
 
 export default connect(null, { signoutUser } )(Signout)
