@@ -1,10 +1,4 @@
 import axios from 'axios'
-// import React from 'react';
-// import { Redirect } from 'react-router-dom'
-// import { browserHistory } from 'react-router'
-// import { CHANGE_AUTH } from './types'
-// import PropTypes from 'prop-types'
-// import { push } from 'react-router-redux'
 
 export const ADD_NEW_ALERT = 'ADD_NEW_ALERT'
 export const ADD_NEW_USER = 'ADD_NEW_USER'
@@ -21,9 +15,8 @@ export const AUTH_ERROR = 'AUTH_ERROR'
 export const UNAUTH_USER = 'UNAUTH_USER'
 export const SIGN_OUT = 'SIGN_OUT'
 
-// const ROOT_URL = 'http://localhost:5000'
-const ROOT_URL = 'https://mighty-castle-33351.herokuapp.com'
-
+const ROOT_URL = 'http://localhost:5000'
+// const ROOT_URL = 'https://mighty-castle-33351.herokuapp.com'
 
 export function authenticate(isLoggedIn){
   return {
@@ -31,13 +24,6 @@ export function authenticate(isLoggedIn){
     payload: isLoggedIn
   }
 }
-
-// export function authUser(isLoggedIn){
-//   return {
-//     type: AUTH_USER,
-//     payload: isLoggedIn
-//   }
-// }
 export function unauthUser(isLoggedIn){
   return {
     type: UNAUTH_USER,
@@ -72,9 +58,10 @@ export function signinUser({ email, password }, callback){
         localStorage.setItem('token', response.data.token)
         // - redirect to the route desired
         // old way
-        // browserHistory.push('/')
-        // return <Redirect to='/' push={true} />
-        // store.dispatch(push('/'))
+        // - browserHistory.push('/')
+        // tried:
+        //    return <Redirect to='/' push={true} />
+        //    store.dispatch(push('/'))
         callback()
       })
       .catch((response) => {
@@ -97,11 +84,8 @@ export function signupUser({ email, password }){
         // - save the jwt token
         console.log(response.data.token)
         localStorage.setItem('token', response.data.token)
-        // dispatch({
-        //   type: CHANGE_AUTH,
-        //   payload: true
-        // })
         // - redirect to the route desired
+        // - - done in handleSubmit
       })
       .catch((response) => {
         // if request is bad:
@@ -116,34 +100,28 @@ export function signoutUser(){
     type: UNAUTH_USER
   }
 }
-
 export function addNewAlert(values){
   console.log('addNewAlert', values);
   const request = axios.post(`${ROOT_URL}/alerts`, values)
-
   return {
     type: ADD_NEW_ALERT,
     payload: request
   }
 }
-
 export function addNewUser(newUser){
   return {
     type: ADD_NEW_USER,
     payload: newUser
   }
 }
-
 export function deleteAlert(alertId){
   console.log('deleteAlert', alertId);
   const request = axios.delete(`${ROOT_URL}/alerts/${alertId}`)
-
   return {
     type: DELETE_ALERT,
     payload: request
   }
 }
-
 // export function facebookLogin(){
 //   console.log('facebookLogin');
 //   const request = axios.get(`https://localhost:443/auth/login/facebook/`)
@@ -153,34 +131,27 @@ export function deleteAlert(alertId){
 //     payload: request
 //   }
 // }
-
 export function getAllAlerts(){
   const request = axios.get(`${ROOT_URL}/alerts`)
-
   return {
     type: GET_ALL_ALERTS,
     payload: request
   }
 }
-
 export function getDetails(alertId){
   return {
     type: GET_DETAILS,
     payload: alertId
   }
 }
-
 export function searchAlerts(filters){
   console.log('searchAlerts', filters);
-
   const request = axios.get(`${ROOT_URL}/alerts/search?terms=${filters}`)
-
   return {
     type: SEARCH_ALERTS,
     payload: request
   }
 }
-
 export function selectAlert(alertId){
   console.log(alertId);
   return {
@@ -188,17 +159,3 @@ export function selectAlert(alertId){
     payload: alertId
   }
 }
-
-
-
-// .then(response => {
-//   // if request is good:
-//   // - update state to indicate user is authenticated
-//   // - save the jwt token
-//   // - redirect to the route desired
-//   // console.log('history', this.props.router)
-//   // console.log(response);
-//   // this.context.router.history.push('/')
-//   this.props.history.push('/')
-//   // browserHistory.push('/')
-// })
