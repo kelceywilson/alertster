@@ -27,10 +27,9 @@ class Signup extends Component {
 
   handleFormSubmit({ email, password, passwordConfirm }){
     console.log(email, password)
-    this.props.signupUser({ email, password})
-
-    // this.props.history.push('/resources')
-      // .then(() => this.props.history.push('/'))
+    this.props.signupUser({ email, password}, () => {
+      this.props.history.push('/')
+    })
   }
 
   renderAlert(){
@@ -105,10 +104,3 @@ export default reduxForm({
 })(
   connect(mapStateToProps, {signupUser})(Signup)
 )
-// export default reduxForm({
-//   validate: validate,
-//   form: 'NewAlertForm',
-//   onSubmitSuccess: afterSubmit
-// })(
-//   connect(null, { addNewAlert, getAllAlerts } )(NewAlert)
-// )

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-
-// <a href="https://localhost:443/auth/login/facebook">
 import { signinUser } from '../actions/index'
-// const redirectHome = () => this.props.history.push('/')
 
 class Signin extends Component {
   renderField(field){
@@ -27,11 +24,13 @@ class Signin extends Component {
 
   handleFormSubmit({ email, password }){
     console.log(email, password)
-    this.props.signinUser({ email, password }, () => {
-      this.props.history.push('/')
+    this.props.signinUser({ email, password }, (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.props.history.push('/')
+      }
     })
-    // this.props.history.push('/resources')
-      // .then(() => this.props.history.push('/'))
   }
 
   renderAlert(){
@@ -95,10 +94,3 @@ export default reduxForm({
 })(
   connect(mapStateToProps, {signinUser})(Signin)
 )
-// export default reduxForm({
-//   validate: validate,
-//   form: 'NewAlertForm',
-//   onSubmitSuccess: afterSubmit
-// })(
-//   connect(null, { addNewAlert, getAllAlerts } )(NewAlert)
-// )
