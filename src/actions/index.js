@@ -4,6 +4,7 @@ export const ADD_NEW_ALERT = 'ADD_NEW_ALERT'
 export const ADD_NEW_USER = 'ADD_NEW_USER'
 export const CHANGE_AUTH = 'CHANGE_AUTH'
 export const DELETE_ALERT = 'DELETE_ALERT'
+export const FETCH_MESSAGE = 'FETCH_MESSAGE'
 export const GET_ALL_ALERTS = 'GET_ALL_ALERTS'
 export const GET_DETAILS = 'GET_DETAILS'
 export const SEARCH_ALERTS = 'SELECT_ALERT'
@@ -90,7 +91,7 @@ export function signupUser({ email, password }){
       .catch((response) => {
         // if request is bad:
         // - show an error to the user
-        dispatch(authError(response.data.error))
+        dispatch(authError(response))
       })
   }
 }
@@ -159,3 +160,31 @@ export function selectAlert(alertId){
     payload: alertId
   }
 }
+
+// redux thunk version of fetchMessage
+export function fetchMessage(){
+  return function(dispatch){
+    axios.get(ROOT_URL, {
+      headers: { authorization: localStorage.getItem('token')}
+    })
+      .then((response) => {
+        console.log(response)
+        dispatch({
+          type: FETCH_MESSAGE,
+          payload: response.data.message
+        })
+      })
+  }
+}
+
+// redux promise version
+// export function fetchMessage(){
+//   const request = axios.get(ROOT_URL, {
+//     headers: { authorization: localStorage.getItem('token')}
+//   })
+//
+//   return {
+//     type: FETCH_MESSAGE,
+//     payload: request.message
+//   }
+// }
