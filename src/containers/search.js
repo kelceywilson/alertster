@@ -26,7 +26,6 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <h4>Search</h4>
         <form onSubmit={this.onFormSubmit}>
           <input
             placeholder="search"

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 // import { bindActionCreators } from 'redux'
 import _ from 'lodash'
+import Modal from 'react-responsive-modal';
 
+import NewAlert from './new_alert'
 // import AlertDetail from '../containers/alert_detail'
 import { deleteAlert, getAllAlerts, selectAlert } from '../actions/index'
 
@@ -26,16 +28,32 @@ class AlertList extends Component {
     })
   }
 
+  state = {
+    open: false,
+  };
+
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+
   render() {
+    const { open } = this.state;
+
     return (
       <div className='alert-list'>
-        <h3>AlertList</h3>
+        <button onClick={this.onOpenModal}>Submit New Alert</button>
+        <Modal open={open} onClose={this.onCloseModal} center>
+          <NewAlert />
+        </Modal>
         {this.createAlertList()}
       </div>
     )
   }
 }
-
 
 // don't need to map state to props here because it's happening
 // in the alert container

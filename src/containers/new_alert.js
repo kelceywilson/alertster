@@ -45,7 +45,6 @@ class NewAlert extends Component {
 
     return (
       <div>
-        <h4>New Alert</h4>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
             label='Alert Type'

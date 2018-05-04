@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Filter from './filter'
-import NewAlert from './new_alert'
+// import NewAlert from './new_alert'
 import Search from './search'
 import AlertList from './alert_list'
 import { selectAlert } from '../actions/index'
@@ -13,11 +13,11 @@ class AlertContainer extends Component {
   //   console.log('componentDidMount');
   //   getAllAlerts()
   // }
+  // <NewAlert />
 
   render() {
     return (
       <div>
-        <NewAlert />
         <Search />
         <Filter />
         <AlertList
