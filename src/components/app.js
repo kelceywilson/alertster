@@ -1,15 +1,27 @@
+
 import React, { Component } from 'react';
+// import ReactDOM from 'react-dom';
+// import { Provider } from 'react-redux';
+// import { createStore, applyMiddleware } from 'redux';
+// import ReduxPromise from 'redux-promise'
+// import reduxThunk from 'redux-thunk'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import requireAuth from './require_authentication'
+// import './index.css';  <- can put css here as alternative to /public
+// import { BrowserRouter, Route, Switch} from 'react-router-dom'
+// ^^ history tells router how to keep track of current url
+import requireAuth from '../containers/require_authentication'
 import AlertContainer from '../containers/alert_container'
-import Signin from './signin';
-import Menu from './menu'
+import Signin from '../containers/signin';
+import Signout from '../containers/signout';
+import Signup from '../containers/signup';
+import Menu from '../containers/menu'
 import NotFound from './not_found'
 import Resources from './resources'
+// import reducers from '../reducers';
+// import { AUTH_USER } from './actions/index'
 
-
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <BrowserRouter>
@@ -19,10 +31,14 @@ export default class App extends Component {
             <Route exact path="/" component={AlertContainer}/>
             <Route path="/resources" component={requireAuth(Resources)}/>
             <Route path="/signin" component={Signin}/>
+            <Route path="/signout" component={Signout}/>
+            <Route path="/signup" component={Signup}/>
             <Route component={NotFound}/>
           </Switch>
         </div>
       </BrowserRouter>
-    );
+    )
   }
 }
+
+export default App
