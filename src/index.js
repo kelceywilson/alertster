@@ -24,7 +24,7 @@ import { AUTH_USER } from './actions/index'
 // import registerServiceWorker from './registerServiceWorker';
 
 
-const createStoreWithMiddleware = applyMiddleware(reduxThunk, ReduxPromise)(createStore);
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise, reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 const token = localStorage.getItem('token')
