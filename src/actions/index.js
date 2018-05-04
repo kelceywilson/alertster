@@ -15,6 +15,8 @@ export const AUTH_USER = 'AUTH_USER'
 export const AUTH_ERROR = 'AUTH_ERROR'
 export const UNAUTH_USER = 'UNAUTH_USER'
 export const SIGN_OUT = 'SIGN_OUT'
+export const OPEN_MODAL = 'OPEN_MODAL'
+export const CLOSE_MODAL = 'CLOSE_MODAL'
 
 const ROOT_URL = 'http://localhost:5000'
 // const ROOT_URL = 'https://mighty-castle-33351.herokuapp.com'
@@ -188,3 +190,16 @@ export function fetchMessage(){
 //     payload: request.message
 //   }
 // }
+
+
+export function openModal(){
+  return {
+    type: OPEN_MODAL
+  }
+}
+
+export function closeModal(){
+  return {
+    type: CLOSE_MODAL
+  }
+}
