@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Field, reduxForm, reset } from 'redux-form'
 // import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { addNewAlert, getAllAlerts } from '../actions/index'
+import { addNewAlert, closeModal, getAllAlerts } from '../actions/index'
 
 // field.input is an object that contains a bunch of
 // event handlers and props
@@ -35,8 +35,12 @@ class NewAlert extends Component {
   onSubmit(values){
     // console.log(values);
     this.props.addNewAlert(values)
+    this.props.closeModal()
   }
 
+  onCancel(){
+    this.props.closeModal()
+  }
   // handleSubmit is given by reduxForm (like connect)
   // it runs the submitted values through the error
   // handler, and if ok, then to the onSubmit function
@@ -59,7 +63,7 @@ class NewAlert extends Component {
           <button type="submit">
             SUBMIT AN ALERT
           </button>
-          <button>Cancel</button>
+          <button onClick={this.onCancel.bind(this)}>Cancel</button>
         </form>
       </div>
     );
@@ -89,5 +93,5 @@ export default reduxForm({
   form: 'NewAlertForm',
   onSubmitSuccess: afterSubmit
 })(
-  connect(null, { addNewAlert, getAllAlerts } )(NewAlert)
+  connect(null, { addNewAlert, closeModal, getAllAlerts } )(NewAlert)
 )
