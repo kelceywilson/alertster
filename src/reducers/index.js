@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
+import { reducer as FormReducer } from 'redux-form'
 import AlertsReducer from './alerts_reducer'
 import SelectAlertReducer from './select_alert_reducer'
 import AuthReducer from './auth_reducer'
+import ModalReducer from './modal_reducer'
 
 const rootReducer = combineReducers({
   alerts: AlertsReducer,
   auth: AuthReducer,
   selectAlert: SelectAlertReducer,
-  form: formReducer
+  form: FormReducer,
+  open: ModalReducer
 });
 
 export default rootReducer

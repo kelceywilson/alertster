@@ -194,12 +194,14 @@ export function fetchMessage(){
 
 export function openModal(){
   return {
-    type: OPEN_MODAL
+    type: OPEN_MODAL,
+    payload: true
   }
 }
 
 export function closeModal(){
   return {
-    type: CLOSE_MODAL
+    type: CLOSE_MODAL,
+    payload: false
   }
 }
