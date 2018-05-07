@@ -6,7 +6,7 @@ import Modal from 'react-responsive-modal';
 
 import NewAlert from './new_alert'
 // import AlertDetail from '../containers/alert_detail'
-import { deleteAlert, getAllAlerts, selectAlert } from '../actions/index'
+import { closeModal, deleteAlert, getAllAlerts, openModal, selectAlert } from '../actions/index'
 
 class AlertList extends Component {
   componentDidMount(){
@@ -28,21 +28,16 @@ class AlertList extends Component {
     })
   }
 
-  state = {
-    open: false,
-  };
-
   onOpenModal = () => {
-    this.setState({ open: true });
+    this.props.openModal();
   };
 
   onCloseModal = () => {
-    this.setState({ open: false });
+    this.props.closeModal();
   };
 
   render() {
-    const { open } = this.state;
-
+    const { open } = this.props;
     return (
       <div className='alert-list'>
         <button onClick={this.onOpenModal}>Submit New Alert</button>
@@ -55,22 +50,17 @@ class AlertList extends Component {
   }
 }
 
-// don't need to map state to props here because it's happening
-// in the alert container
-// function mapStateToProps(state){
-//   // whatever is returned from here will show up as
-//   //  this.props inside of this Component
-//   //  this is the glue between react & redux
-//   console.log(state.alerts);
-//   return {
-//     alerts: state.alerts
-//   }
-// }
-//
-// export default connect(mapStateToProps)(AlertList)
+function mapStateToProps(state){
+  // whatever is returned from here will show up as
+  //  this.props inside of this Component
+  //  this is the glue between react & redux
+  return {
+    open: state.open
+  }
+}
 
 // function mapDispatchToProps(dispatch) {
 //   return bindActionCreators({ getAllAlerts }, dispatch)
 // }
 
-export default connect(null, { deleteAlert, getAllAlerts, selectAlert })(AlertList)
+export default connect(mapStateToProps, { closeModal, deleteAlert, getAllAlerts, openModal, selectAlert })(AlertList)
