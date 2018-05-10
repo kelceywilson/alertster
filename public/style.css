@@ -20,6 +20,10 @@ body {
   margin: 5px;
   /* padding: 0 10px; */
 }
+.alert-thumb {
+  width: 100px;
+  height: 100px;
+}
 .alert-type {
   background-color: lightgreen;
 }
