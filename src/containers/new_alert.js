@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Field, reduxForm, reset } from 'redux-form'
-// import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import FileUploader from './file_uploader'
 import { addNewAlert, closeModal, getAllAlerts } from '../actions/index'
-
 // field.input is an object that contains a bunch of
 // event handlers and props
 // the ... is saying all of the properties of the object
@@ -34,7 +33,8 @@ class NewAlert extends Component {
 
   onSubmit(values){
     // console.log(values);
-    this.props.addNewAlert(values)
+    const photo_url = this.props.photo_url
+    this.props.addNewAlert({...values, photo_url})
     this.props.closeModal()
   }
 
@@ -44,9 +44,13 @@ class NewAlert extends Component {
   // handleSubmit is given by reduxForm (like connect)
   // it runs the submitted values through the error
   // handler, and if ok, then to the onSubmit function
+  fileUpload(event){
+    console.log(event.target.files[0])
+  }
   render() {
     const { handleSubmit } = this.props
-
+    // const imgPreview = document.getElementById('img-preview')
+    // const fileUpload = document.getElementById('file-upload')
     return (
       <div>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -59,6 +63,11 @@ class NewAlert extends Component {
             label='Title'
             name='title'
             component={this.renderField}
+          />
+          <Field
+            label='Photo'
+            name='photo_url'
+            component={FileUploader}
           />
           <button type="submit">
             SUBMIT AN ALERT
@@ -86,6 +95,11 @@ function validate(values){
 
 const afterSubmit = (result, dispatch) => dispatch(reset('NewAlertForm'))
 
+
+function mapStateToProps(state){
+  return { photo_url: state.file.photo_url }
+}
+
 // reduxForm is a lot like connect
 // helps form connect to reduxForm reducer
 export default reduxForm({
@@ -93,5 +107,5 @@ export default reduxForm({
   form: 'NewAlertForm',
   onSubmitSuccess: afterSubmit
 })(
-  connect(null, { addNewAlert, closeModal, getAllAlerts } )(NewAlert)
+  connect(mapStateToProps, { addNewAlert, closeModal, getAllAlerts } )(NewAlert)
 )
