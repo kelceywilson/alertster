@@ -22,6 +22,7 @@ class AlertList extends Component {
           onClick={() => this.props.selectAlert(alert._id)}>
           <h4 className="alert-type">Type: {alert.alert_type}</h4>
           <h5 className="alert-title">Title: {alert.title}</h5>
+          <img className="alert-thumb" src={alert.photo_url} alt={alert.title} />
           <button onClick={() => this.props.deleteAlert(alert._id)}>Delete Alert</button>
         </div>
       )
