@@ -17,6 +17,7 @@ export const UNAUTH_USER = 'UNAUTH_USER'
 export const SIGN_OUT = 'SIGN_OUT'
 export const OPEN_MODAL = 'OPEN_MODAL'
 export const CLOSE_MODAL = 'CLOSE_MODAL'
+export const UPLOAD_FILE = 'UPLOAD_FILE'
 
 const ROOT_URL = 'http://localhost:5000'
 // const ROOT_URL = 'https://mighty-castle-33351.herokuapp.com'
@@ -205,3 +206,51 @@ export function closeModal(){
     payload: false
   }
 }
+
+// export function fetchMessage(){
+//   return function(dispatch){
+//     axios.get(ROOT_URL, {
+//       headers: { authorization: localStorage.getItem('token')}
+//     })
+//       .then((response) => {
+//         console.log(response)
+//         dispatch({
+//           type: FETCH_MESSAGE,
+//           payload: response.data.message
+//         })
+//       })
+//   }
+// }
+export const uploadFile = (event) => {
+  const file = event.target.files[0]
+  const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/alertsapi/upload'
+  const CLOUDINARY_UPLOAD_PRESET = 'p2egownn'
+  const formData = new FormData()
+  formData.append('file', file)
+  formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+  return (dispatch) => {
+    return axios({
+      url: CLOUDINARY_URL,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: formData
+    }).then((response) => {
+      console.log('cloudinary response', response);
+      dispatch({
+        type: UPLOAD_FILE,
+        payload: response.data.secure_url
+      })
+      // return response.data.secure_url
+    }).catch(function(err){
+      console.log(err);
+    })
+  }
+}
+// const fileURL = 'http://fillmurray.com/g/100/100'
+
+// dispatch({
+//   type: UPLOAD_FILE,
+//   payload: response.data.secure_url
+// })
