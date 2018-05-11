@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchMessage } from '../actions'
 
-class Resources extends Component {
+class Profile extends Component {
   componentDidMount(){
     this.props.fetchMessage()
   }
@@ -12,7 +12,7 @@ class Resources extends Component {
 
     return (
       <div>
-        <h4>Resources</h4>
+        <h4>Profile</h4>
         <div>{this.props.message}</div>
       </div>
     )
@@ -23,7 +23,7 @@ function mapStateToProps(state){
   return { message: state.auth.message }
 }
 
-export default connect(mapStateToProps, { fetchMessage })(Resources)
+export default connect(mapStateToProps, { fetchMessage })(Profile)
 // we pass this in to a higher order component
 // to give it some additional behavior
 // so that it becomes a wrapped Resources

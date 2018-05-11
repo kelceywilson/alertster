@@ -17,7 +17,7 @@ import Signout from '../containers/signout';
 import Signup from '../containers/signup';
 import Menu from '../containers/menu'
 import NotFound from './not_found'
-import Resources from './resources'
+import Profile from './profile'
 // import reducers from '../reducers';
 // import { AUTH_USER } from './actions/index'
 
@@ -29,7 +29,7 @@ class App extends Component {
           <Menu />
           <Switch>
             <Route exact path="/" component={AlertContainer}/>
-            <Route path="/resources" component={requireAuth(Resources)}/>
+            <Route path="/profile" component={requireAuth(Profile)}/>
             <Route path="/signin" component={Signin}/>
             <Route path="/signout" component={Signout}/>
             <Route path="/signup" component={Signup}/>

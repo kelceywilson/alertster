@@ -25,7 +25,7 @@ class Menu extends Component {
       <nav>
         <div className="nav">
           <NavLink exact to="/" activeClassName="button">Home</NavLink>
-          <NavLink to="/resources">Resources</NavLink>
+          <NavLink to="/profile">Profile</NavLink>
           {this.authButton()}
         </div>
       </nav>
