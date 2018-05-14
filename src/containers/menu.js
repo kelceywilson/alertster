@@ -37,4 +37,8 @@ function mapStateToProps(state){
   return { authenticated: state.auth.authenticated }
 }
 
-export default connect(mapStateToProps, {authenticate})(Menu)
+// pure is set to false to ensure Menu re-renders when a NavLink
+// sets its class to active
+export default connect(mapStateToProps, {authenticate}, null, {
+  pure: false
+})(Menu)
