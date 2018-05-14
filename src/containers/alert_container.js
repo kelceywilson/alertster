@@ -18,8 +18,10 @@ class AlertContainer extends Component {
   render() {
     return (
       <div>
-        <Search />
-        <Filter />
+        <div className='flex-row'>
+          <Search />
+          <Filter />
+        </div>
         <AlertList
           alerts={this.props.alerts}
           selectAlert={this.props.selectAlert}

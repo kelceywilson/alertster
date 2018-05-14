@@ -9,7 +9,6 @@ export const GET_ALL_ALERTS = 'GET_ALL_ALERTS'
 export const GET_DETAILS = 'GET_DETAILS'
 export const SEARCH_ALERTS = 'SELECT_ALERT'
 export const SELECT_ALERT = 'SELECT_ALERT'
-// export const FACEBOOK_LOGIN = 'FACEBOOK_LOGIN'
 export const UPDATE_TOKEN = 'UPDATE_TOKEN'
 export const AUTH_USER = 'AUTH_USER'
 export const AUTH_ERROR = 'AUTH_ERROR'
@@ -207,20 +206,6 @@ export function closeModal(){
   }
 }
 
-// export function fetchMessage(){
-//   return function(dispatch){
-//     axios.get(ROOT_URL, {
-//       headers: { authorization: localStorage.getItem('token')}
-//     })
-//       .then((response) => {
-//         console.log(response)
-//         dispatch({
-//           type: FETCH_MESSAGE,
-//           payload: response.data.message
-//         })
-//       })
-//   }
-// }
 export const uploadFile = (event) => {
   const file = event.target.files[0]
   const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/alertsapi/upload'

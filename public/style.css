@@ -37,9 +37,24 @@ body {
 }
 .nav {
   margin: 15px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #bada55;
+  padding: 5px;
 }
-
+.nav a {
+  text-decoration: none;
+}
 .nav a:hover, .nav .active {
-  color: #fff;
-  background: #3b80d1;
+  /* color: #fff; */
+  background: yellow;
+}
+.flex-row {
+  /* display: inline; */
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+.button {
+  border: 1px solid black;
 }

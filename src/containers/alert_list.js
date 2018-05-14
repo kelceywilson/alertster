@@ -41,7 +41,7 @@ class AlertList extends Component {
     const { open } = this.props;
     return (
       <div className='alert-list'>
-        <button onClick={this.onOpenModal}>Submit New Alert</button>
+        <button onClick={this.onOpenModal} className='button'>Submit New Alert</button>
         <Modal open={open} onClose={this.onCloseModal} center>
           <NewAlert />
         </Modal>
