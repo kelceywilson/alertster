@@ -32,7 +32,6 @@ class Search extends Component {
             value={this.state.terms}
             onChange={this.onInputChange}
           />
-          <button type="submit">Submit</button>
         </form>
       </div>
     );
