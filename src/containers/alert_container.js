@@ -18,7 +18,7 @@ class AlertContainer extends Component {
   render() {
     return (
       <div>
-        <div className='flex-row'>
+        <div className='filters'>
           <Search />
           <Filter />
         </div>

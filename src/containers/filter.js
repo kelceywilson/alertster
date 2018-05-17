@@ -18,7 +18,7 @@ class Filter extends Component {
 
   createAlertTypeList() {
     return (
-      <div>
+      <div className='filter'>
         <select onChange={this.onInputChange}>
           <option value='hello'>hello</option>
           <option value='there'>there</option>

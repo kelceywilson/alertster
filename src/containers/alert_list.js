@@ -20,10 +20,10 @@ class AlertList extends Component {
           className="alert-div"
           key={alert._id}
           onClick={() => this.props.selectAlert(alert._id)}>
-          <h4 className="alert-type">Type: {alert.alert_type}</h4>
-          <h5 className="alert-title">Title: {alert.title}</h5>
           <img className="alert-thumb" src={alert.photo_url} alt={alert.title} />
-          <button onClick={() => this.props.deleteAlert(alert._id)}>Delete Alert</button>
+          <h4 className="alert-type">{alert.alert_type}</h4>
+          <h5 className="alert-title">{alert.title}</h5>
+          <button className="alert-delete" onClick={() => this.props.deleteAlert(alert._id)}>Delete Alert</button>
         </div>
       )
     })
@@ -40,12 +40,16 @@ class AlertList extends Component {
   render() {
     const { open } = this.props;
     return (
-      <div className='alert-list'>
-        <button onClick={this.onOpenModal} className='button'>Submit New Alert</button>
-        <Modal open={open} onClose={this.onCloseModal} center>
-          <NewAlert />
-        </Modal>
-        {this.createAlertList()}
+      <div>
+        <div className='create-new-alert-button-div'>
+          <button onClick={this.onOpenModal} className='alert-new-button'>CREATE<img className='icon' src='./add.png' alt='add alert' /> ALERT</button>
+        </div>
+        <div className='alert-list'>
+          <Modal open={open} onClose={this.onCloseModal} center>
+            <NewAlert />
+          </Modal>
+          {this.createAlertList()}
+        </div>
       </div>
     )
   }

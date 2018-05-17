@@ -8,17 +8,23 @@ class Menu extends Component {
     if(this.props.authenticated){
       return (
         <div className="nav">
-          <NavLink exact to="/">Home</NavLink>
-          <NavLink to="/profile">Profile</NavLink>
-          <NavLink to="/signout">Sign Out</NavLink>
+          <NavLink exact to="/">
+            <img className='icon' src='./home.png' alt='home' />
+          </NavLink>
+          <NavLink to="/profile">
+            <img className='icon' src='./user.png' alt='profile' />
+          </NavLink>
+          <NavLink className='smush-left' to="/signout">
+            <img className='icon' src='./arrow.png' alt='signout' />
+          </NavLink>
         </div>
       )
     } else {
       return (
         <div className="nav">
-          <NavLink exact to="/">Home</NavLink>
-          <NavLink to="/signin">Sign In</NavLink>
-          <NavLink to="/signup">Sign Up</NavLink>
+          <NavLink exact to="/">HOME</NavLink>
+          <NavLink to="/signin">SIGN IN</NavLink>
+          <NavLink to="/signup">SIGN UP</NavLink>
         </div>
       )
     }
