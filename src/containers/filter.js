@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { searchAlerts } from '../actions/index'
+import { filterAlerts } from '../actions/index'
 
 class Filter extends Component {
   constructor(props){
@@ -13,7 +13,7 @@ class Filter extends Component {
 
   onInputChange(event){
     this.setState({ terms: event.target.value })
-    this.props.searchAlerts(event.target.value)
+    this.props.filterAlerts(event.target.value)
   }
 
   createAlertTypeList() {
@@ -21,7 +21,7 @@ class Filter extends Component {
       <div className='filter'>
         <select onChange={this.onInputChange}>
           <option value='hello'>hello</option>
-          <option value='there'>there</option>
+          <option value='there'>SALE</option>
         </select>
       </div>
     )
@@ -37,7 +37,7 @@ class Filter extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ searchAlerts }, dispatch)
+  return bindActionCreators({ filterAlerts }, dispatch)
 }
 
 export default connect(null, mapDispatchToProps)(Filter)

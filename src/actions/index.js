@@ -147,9 +147,17 @@ export function getDetails(alertId){
     payload: alertId
   }
 }
-export function searchAlerts(filters){
-  console.log('searchAlerts', filters);
-  const request = axios.get(`${ROOT_URL}/alerts/search?terms=${filters}`)
+export function filterAlerts(filter){
+  console.log('searchAlerts', filter);
+  const request = axios.get(`${ROOT_URL}/alerts/filter?filterBy=${filter}`)
+  return {
+    type: SEARCH_ALERTS,
+    payload: request
+  }
+}
+export function searchAlerts(terms){
+  console.log('searchAlerts', terms);
+  const request = axios.get(`${ROOT_URL}/alerts/search?terms=${terms}`)
   return {
     type: SEARCH_ALERTS,
     payload: request
