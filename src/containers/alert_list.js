@@ -43,6 +43,8 @@ class AlertList extends Component {
       <div>
         <div className='create-new-alert-button-div'>
           <button onClick={this.onOpenModal} className='alert-new-button'>CREATE<img className='icon' src='./add.png' alt='add alert' /> ALERT</button>
+          <button>Get All Alerts</button>
+
         </div>
         <div className='alert-list'>
           <Modal open={open} onClose={this.onCloseModal} center>
