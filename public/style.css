@@ -22,7 +22,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  flex-wrap: nowrap;
+  /* flex-wrap: nowrap; */
   /* margin: 5px 0 0; */
   background-color: #F0F0F0;
   padding: 10px 0 5px;
