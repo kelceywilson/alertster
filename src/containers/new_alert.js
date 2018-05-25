@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { Field, reduxForm, reset } from 'redux-form'
 import { connect } from 'react-redux'
 import FileUploader from './file_uploader'
+import AlertTypeChooser from './alert_type_chooser'
 import { addNewAlert, closeModal, getAllAlerts } from '../actions/index'
+
 // field.input is an object that contains a bunch of
 // event handlers and props
 // the ... is saying all of the properties of the object
@@ -32,9 +34,10 @@ class NewAlert extends Component {
   }
 
   onSubmit(values){
-    // console.log(values);
+    console.log('onSubmit NewAlert form', this.props);
     const photo_url = this.props.photo_url
-    this.props.addNewAlert({...values, photo_url})
+    const alert_type = this.props.alert_type
+    this.props.addNewAlert({...values, photo_url, alert_type})
     this.props.closeModal()
   }
 
@@ -44,20 +47,17 @@ class NewAlert extends Component {
   // handleSubmit is given by reduxForm (like connect)
   // it runs the submitted values through the error
   // handler, and if ok, then to the onSubmit function
-  fileUpload(event){
-    console.log(event.target.files[0])
-  }
+
   render() {
     const { handleSubmit } = this.props
-    // const imgPreview = document.getElementById('img-preview')
-    // const fileUpload = document.getElementById('file-upload')
+
     return (
       <div>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
             label='Alert Type'
             name='alert_type'
-            component={this.renderField}
+            component={AlertTypeChooser}
           />
           <Field
             label='Title'
@@ -82,9 +82,6 @@ class NewAlert extends Component {
 function validate(values){
   const errors = {}
 
-  if(!values.alert_type){
-    errors.alert_type = "Enter alert type"
-  }
   if(!values.title){
     errors.title = "Enter a title"
   }
@@ -97,7 +94,10 @@ const afterSubmit = (result, dispatch) => dispatch(reset('NewAlertForm'))
 
 
 function mapStateToProps(state){
-  return { photo_url: state.file.photo_url }
+  return {
+    photo_url: state.file.photo_url,
+    alert_type: state.alert_type.alert_type
+  }
 }
 
 // reduxForm is a lot like connect
