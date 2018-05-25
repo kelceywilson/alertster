@@ -14,7 +14,6 @@ This app interfaces with alertsAPI, which can be found here:
 https://github.com/kelceywilson/alertsAPI
 
 ### TODO
-- Make a way to reset the seach & filter without (clear (getAllAlerts) button)
 - Create EditAlert component
 - Create AlertDetails component (to expand inside Alert-Div)
 - Show 'Delete Alert' button only on alerts created by the current user

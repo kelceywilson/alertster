@@ -14,7 +14,7 @@ class AlertList extends Component {
   }
 
   createAlertList() {
-    return _.map(this.props.alerts, alert => {
+    return _.map(this.props.alerts.list, alert => {
       return (
         <div
           className="alert-div"
@@ -27,6 +27,17 @@ class AlertList extends Component {
         </div>
       )
     })
+  }
+
+  getAllButton() {
+    console.log(this.props.alerts);
+    if(this.props.alerts.filtered){
+      return (
+        <div className='get-all-alerts-button-div'>
+          <button onClick={this.props.getAllAlerts}>Get All Alerts</button>
+        </div>
+      )
+    }
   }
 
   onOpenModal = () => {
@@ -43,9 +54,8 @@ class AlertList extends Component {
       <div>
         <div className='create-new-alert-button-div'>
           <button onClick={this.onOpenModal} className='alert-new-button'>CREATE<img className='icon' src='./add.png' alt='add alert' /> ALERT</button>
-          <button>Get All Alerts</button>
-
         </div>
+        {this.getAllButton()}
         <div className='alert-list'>
           <Modal open={open} onClose={this.onCloseModal} center>
             <NewAlert />

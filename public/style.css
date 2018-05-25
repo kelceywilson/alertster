@@ -17,6 +17,7 @@ body {
   justify-content: center;
   flex-wrap: nowrap;
   background-color: #F0F0F0;
+  padding-bottom: 5px;
 }
 .filters {
   display: flex;
@@ -29,6 +30,13 @@ body {
 }
 .filter {
   height: 15px;
+}
+.get-all-alerts-button-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  background-color: #F0F0F0;
 }
 .search {
   background-image: url('./search-icon.png');
