@@ -9,11 +9,6 @@ import { bindActionCreators } from 'redux'
 // ^^ensures action flows through all of the reducers
 
 class AlertContainer extends Component {
-  // componentDidMount(){
-  //   console.log('componentDidMount');
-  //   getAllAlerts()
-  // }
-  // <NewAlert />
 
   render() {
     return (
