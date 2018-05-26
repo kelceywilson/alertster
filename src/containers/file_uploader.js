@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { uploadFile } from '../actions/index'
+import { deletePhotoUrl, uploadFile } from '../actions/index'
 
 class FileUploader extends Component {
   render() {
     if(this.props.photo_url){
       return (
-        <div>
+        <div className='flex-column'>
           <img className='alert-thumb' src={this.props.photo_url} alt='Main alert'/>
+          <button onClick={this.props.deletePhotoUrl}>Change Photo</button>
         </div>
       )
     } else {
@@ -24,4 +25,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps, { uploadFile })(FileUploader)
+export default connect(mapStateToProps, { deletePhotoUrl, uploadFile })(FileUploader)

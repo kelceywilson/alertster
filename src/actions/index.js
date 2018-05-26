@@ -7,6 +7,7 @@ export const AUTH_USER = 'AUTH_USER'
 export const CHANGE_AUTH = 'CHANGE_AUTH'
 export const CLOSE_MODAL = 'CLOSE_MODAL'
 export const DELETE_ALERT = 'DELETE_ALERT'
+export const DELETE_PHOTO_URL = 'DELETE_PHOTO_URL'
 export const FETCH_MESSAGE = 'FETCH_MESSAGE'
 export const GET_ALL_ALERTS = 'GET_ALL_ALERTS'
 export const GET_DETAILS = 'GET_DETAILS'
@@ -37,6 +38,12 @@ export function deleteAlert(alertId){
   return {
     type: DELETE_ALERT,
     payload: request
+  }
+}
+export function deletePhotoUrl(){
+  console.log('deletePhotoUrl');
+  return {
+    type: DELETE_PHOTO_URL,
   }
 }
 export function filterAlerts(filter){

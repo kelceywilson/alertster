@@ -20,10 +20,7 @@ https://github.com/kelceywilson/alertsAPI
 - Add user license to all pages
 - Deploy alertster to Heroku
 - Split earlier commits
-- Upgrade FileUploader to allow users to choose a different photo before submitting alert
-Update AngelList
-Write tests for alertsAPI
-study You Don't Know JS - ch 2
+- Write tests for alertsAPI
 - write some tests for alertster
 - send alertsAPI errors to res.json
 - handle alertsAPI errors in alertster

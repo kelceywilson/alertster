@@ -11,6 +11,13 @@ body {
   width: 20px;
   margin: 5px 10px;
 }
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* flex-wrap: nowrap; */
+  /* background-color: #F0F0F0; */
+}
 .create-new-alert-button-div {
   display: flex;
   flex-direction: row;
@@ -35,7 +42,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  flex-wrap: nowrap;
+  /* flex-wrap: nowrap; */
   background-color: #F0F0F0;
 }
 .search {
