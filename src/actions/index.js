@@ -8,8 +8,10 @@ export const CHANGE_AUTH = 'CHANGE_AUTH'
 export const CLOSE_MODAL = 'CLOSE_MODAL'
 export const DELETE_ALERT = 'DELETE_ALERT'
 export const DELETE_PHOTO_URL = 'DELETE_PHOTO_URL'
+export const EDIT_ALERT = 'EDIT_ALERT'
 export const FETCH_MESSAGE = 'FETCH_MESSAGE'
 export const GET_ALL_ALERTS = 'GET_ALL_ALERTS'
+export const GET_ONE_ALERT = 'GET_ALL_ALERTS'
 export const GET_DETAILS = 'GET_DETAILS'
 export const OPEN_MODAL = 'OPEN_MODAL'
 export const SEARCH_ALERTS = 'SELECT_ALERT'
@@ -46,6 +48,12 @@ export function deletePhotoUrl(){
     type: DELETE_PHOTO_URL,
   }
 }
+export function editAlert(alertId){
+  console.log('editAlert', alertId);
+  return {
+    type: EDIT_ALERT,
+  }
+}
 export function filterAlerts(filter){
   console.log('filterAlerts', filter);
   const request = axios.get(`${ROOT_URL}/alerts/filter?filterBy=${filter}`)
@@ -58,6 +66,13 @@ export function getAllAlerts(){
   const request = axios.get(`${ROOT_URL}/alerts`)
   return {
     type: GET_ALL_ALERTS,
+    payload: request
+  }
+}
+export function getAlertById(id){
+  const request = axios.get(`${ROOT_URL}/alerts/${id}`)
+  return {
+    type: GET_ONE_ALERT,
     payload: request
   }
 }
@@ -215,16 +230,15 @@ export function addNewUser(newUser){
 
 
 // MODAL ACTIONS //
-export function openModal(){
+export function openModal(whichModal){
   return {
     type: OPEN_MODAL,
-    payload: true
+    payload: whichModal
   }
 }
 export function closeModal(){
   return {
     type: CLOSE_MODAL,
-    payload: false
   }
 }
 
