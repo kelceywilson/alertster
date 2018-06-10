@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import _ from 'lodash'
 import Modal from 'react-responsive-modal';
 
-import EditAlert from './edit_alert'
+import AlertDetail from './alert_detail'
 import NewAlert from './new_alert'
 // import AlertDetail from '../containers/alert_detail'
-import { closeModal, deleteAlert, editAlert, getAllAlerts, openModal, selectAlert } from '../actions/index'
+import { closeModal, deleteAlert, getAlertById, getAllAlerts, openModal } from '../actions/index'
 
 class AlertList extends Component {
   componentDidMount(){
@@ -21,16 +21,22 @@ class AlertList extends Component {
           <img className="alert-thumb" src={alert.photo_url} alt={alert.title} />
           <h4 className="alert-type">{alert.alert_type}</h4>
           <h5 className="alert-title">{alert.title}</h5>
-          <button className="alert-delete" onClick={() => this.props.deleteAlert(alert._id)}>Delete Alert</button>
-          <button className="alert-delete" onClick={() => this.props.openModal('editAlertModal')}>Edit Alert</button>
+          <button className="alert-delete" onClick={() => {
+            this.props.getAlertById(alert._id)
+            this.props.openModal(
+              {
+                whichModal: 'alertDetailModal',
+                editAlertId: alert._id
+              })
+            }
+          }>Details</button>
         </div>
       )
     })
   }
 
   getAllButton() {
-    console.log(this.props.alerts);
-    if(this.props.alerts.filtered){
+    if(this.props.filtered){
       return (
         <div className='get-all-alerts-button-div'>
           <button onClick={this.props.getAllAlerts}>Get All Alerts</button>
@@ -51,12 +57,12 @@ class AlertList extends Component {
   };
 
   modalChooser(){
-    const { open, whichModal } = this.props.open;
-    console.log('whichModal', whichModal);
-    if(whichModal === 'editAlertModal'){
+    const { open, whichModal, editAlertId } = this.props.open;
+    console.log('whichModal', whichModal, editAlertId);
+    if(whichModal === 'alertDetailModal'){
       return (
         <Modal open={open} onClose={this.onCloseModal} center>
-          <EditAlert />
+          <AlertDetail />
         </Modal>
       )
     }
@@ -70,7 +76,7 @@ class AlertList extends Component {
     return (
       <div>
         <div className='create-new-alert-button-div'>
-          <button onClick={() => this.props.openModal('newAlertModal')} className='alert-new-button'>CREATE<img className='icon' src='./add.png' alt='add alert' /> ALERT</button>
+          <button onClick={() => this.props.openModal({whichModal: 'newAlertModal'})} className='alert-new-button'>CREATE<img className='icon' src='./add.png' alt='add alert' /> ALERT</button>
         </div>
         {this.getAllButton()}
         <div className='alert-list'>
@@ -87,6 +93,8 @@ function mapStateToProps(state){
   //  this.props inside of this Component
   //  this is the glue between react & redux
   return {
+    alerts: state.alerts,
+    filtered: state.filtered,
     open: state.open
   }
 }
@@ -95,4 +103,4 @@ function mapStateToProps(state){
 //   return bindActionCreators({ getAllAlerts }, dispatch)
 // }
 
-export default connect(mapStateToProps, { closeModal, deleteAlert, editAlert, getAllAlerts, openModal, selectAlert })(AlertList)
+export default connect(mapStateToProps, { closeModal, deleteAlert, getAlertById, getAllAlerts, openModal })(AlertList)

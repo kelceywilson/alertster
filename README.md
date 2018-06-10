@@ -17,6 +17,7 @@ https://github.com/kelceywilson/alertsAPI
 - Create EditAlert component
 - Create AlertDetails component (to expand inside Alert-Div)
 - Show 'Delete Alert' button only on alerts created by the current user
+- Fix type selector so that type must be selected to submit new alert 
 - Add user license to all pages
 - Deploy alertster to Heroku
 - Split earlier commits

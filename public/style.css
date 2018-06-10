@@ -65,6 +65,12 @@ body {
   /* padding: 0 0 20px; */
   justify-content: center;
 }
+.alert-detail {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  /* margin: 20px; */
+}
 .alert-delete {
   margin-bottom: 5px;
   margin-left: 5px;
