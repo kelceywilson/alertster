@@ -3,7 +3,7 @@ import { Field, reduxForm, reset } from 'redux-form'
 import { connect } from 'react-redux'
 import FileUploader from './file_uploader'
 import AlertTypeChooser from './alert_type_chooser'
-import { addNewAlert, closeModal, getAllAlerts } from '../actions/index'
+import { addNewAlert, closeModal } from '../actions/index'
 
 // field.input is an object that contains a bunch of
 // event handlers and props
@@ -107,5 +107,5 @@ export default reduxForm({
   form: 'NewAlertForm',
   onSubmitSuccess: afterSubmit
 })(
-  connect(mapStateToProps, { addNewAlert, closeModal, getAllAlerts } )(NewAlert)
+  connect(mapStateToProps, { addNewAlert, closeModal } )(NewAlert)
 )
