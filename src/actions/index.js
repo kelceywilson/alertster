@@ -8,14 +8,14 @@ export const CHANGE_AUTH = 'CHANGE_AUTH'
 export const CLOSE_MODAL = 'CLOSE_MODAL'
 export const DELETE_ALERT = 'DELETE_ALERT'
 export const DELETE_PHOTO_URL = 'DELETE_PHOTO_URL'
-export const EDIT_ALERT = 'EDIT_ALERT'
+// export const EDIT_ALERT = 'EDIT_ALERT'
 export const FETCH_MESSAGE = 'FETCH_MESSAGE'
+export const FILTER_ALERTS = 'FILTER_ALERTS'
 export const GET_ALL_ALERTS = 'GET_ALL_ALERTS'
-export const GET_ONE_ALERT = 'GET_ALL_ALERTS'
+export const GET_ONE_ALERT = 'GET_ONE_ALERT'
 export const GET_DETAILS = 'GET_DETAILS'
 export const OPEN_MODAL = 'OPEN_MODAL'
-export const SEARCH_ALERTS = 'SELECT_ALERT'
-export const SELECT_ALERT = 'SELECT_ALERT'
+// export const SELECT_ALERT = 'SELECT_ALERT'
 export const SET_ALERT_TYPE = 'SET_ALERT_TYPE'
 export const SIGN_OUT = 'SIGN_OUT'
 export const UNAUTH_USER = 'UNAUTH_USER'
@@ -48,17 +48,17 @@ export function deletePhotoUrl(){
     type: DELETE_PHOTO_URL,
   }
 }
-export function editAlert(alertId){
-  console.log('editAlert', alertId);
-  return {
-    type: EDIT_ALERT,
-  }
-}
+// export function editAlert(alertId){
+//   console.log('editAlert', alertId);
+//   return {
+//     type: EDIT_ALERT,
+//   }
+// }
 export function filterAlerts(filter){
   console.log('filterAlerts', filter);
   const request = axios.get(`${ROOT_URL}/alerts/filter?filterBy=${filter}`)
   return {
-    type: SEARCH_ALERTS,
+    type: FILTER_ALERTS,
     payload: request
   }
 }
@@ -86,17 +86,17 @@ export function searchAlerts(terms){
   console.log('searchAlerts', terms);
   const request = axios.get(`${ROOT_URL}/alerts/search?terms=${terms}`)
   return {
-    type: SEARCH_ALERTS,
+    type: FILTER_ALERTS,
     payload: request
   }
 }
-export function selectAlert(alertId){
-  console.log('selectAlert', alertId);
-  return {
-    type: SELECT_ALERT,
-    payload: alertId
-  }
-}
+// export function selectAlert(alertId){
+//   console.log('selectAlert', alertId);
+//   return {
+//     type: SELECT_ALERT,
+//     payload: alertId
+//   }
+// }
 export function setAlertType(alertType){
   console.log('setAlertType', alertType);
   return {
@@ -230,10 +230,10 @@ export function addNewUser(newUser){
 
 
 // MODAL ACTIONS //
-export function openModal(whichModal){
+export function openModal(payload){
   return {
     type: OPEN_MODAL,
-    payload: whichModal
+    payload: payload
   }
 }
 export function closeModal(){
