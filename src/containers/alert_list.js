@@ -13,7 +13,6 @@ class AlertList extends Component {
   componentDidMount(){
     this.props.getAllAlerts()
   }
-
   createAlertList() {
     return _.map(this.props.alerts.list, alert => {
       return (
@@ -23,13 +22,15 @@ class AlertList extends Component {
           <h5 className="alert-title">{alert.title}</h5>
           <button className="alert-delete" onClick={() => {
             this.props.getAlertById(alert._id)
-            this.props.openModal(
-              {
-                whichModal: 'alertDetailModal',
-                editAlertId: alert._id
-              })
-            }
-          }>Details</button>
+            .then(()=>{
+              this.props.openModal(
+                {
+                  whichModal: 'alertDetailModal',
+                  editAlertId: alert._id
+                }
+              )
+            })
+          }}>Details</button>
         </div>
       )
     })
@@ -65,12 +66,13 @@ class AlertList extends Component {
           <AlertDetail />
         </Modal>
       )
+    } else {
+      return(
+        <Modal open={open} onClose={this.onCloseModal} center>
+          <NewAlert />
+        </Modal>
+      )
     }
-    return(
-      <Modal open={open} onClose={this.onCloseModal} center>
-        <NewAlert />
-      </Modal>
-    )
   }
   render() {
     return (
