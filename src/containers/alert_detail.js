@@ -1,71 +1,100 @@
 import React, { Component } from 'react'
+import { Field, reduxForm, reset } from 'redux-form'
 import { connect } from 'react-redux'
 import { closeModal, deleteAlert } from '../actions/index'
-import _ from 'lodash'
-
-// TODO make a function that provides all key-value pairs
-// in p tags
-// TODO make a function that turns those p tags to inputs
-// {/* <img className="alert-thumb" src={alert.photo_url} alt={alert.title} />
-// <h3>{alert.alert_type}</h3>
-// <h3>{alert.title}</h3> */}
 
 class AlertDetail extends Component {
-
-  // for (let i in this.props.alerts.alert){
-  //   return (
-  //     <p>{i}</p>
-  //   )
-  // }
-  keyValuePairs(edit){
-    const pairs = Object.entries(this.props.alerts.alert)
-    console.log(pairs);
-    // const { alerts: {alert} } = this.props
-    if(!edit){
-      let keyCounter = -1
-      return _.map(pairs, pair => {
-        keyCounter++
-        return (
-          <p key={keyCounter}>{pair[0]}: {pair[1]}</p>
-        )
-      })
-    } else {
-      let keyCounter = -1
-      return _.map(pairs, pair => {
-        keyCounter++
-        return (
-          <p key={keyCounter}>{pair[0]}: {pair[1]}</p>
-        )
-      })
-    }
+  componentDidMount(){
+    this.handleInitialize()
+  }
+  handleInitialize(){
+    const initData = this.props.alerts.alert
+    console.log(initData);
+    this.props.initialize(initData)
   }
 
-  alertDetail() {
-    if (this.props.alerts.alert) {
-      const details = this.keyValuePairs()
-      console.log(details);
-      return (
-        <div className='alert-detail'>
-          {details}
-          <button className="alert-delete" onClick={() => this.props.deleteAlert(alert._id)}>Delete Alert</button>
+  renderField(field){
+    const { meta: { touched, error } } = field
+    const className = touched && error ? 'error' : ''
+    console.log(field);
+    return (
+      <div>
+        <label>{field.label}</label>
+        <input
+          className={className}
+          type='text'
+          {...field.input}
+        />
+        <div className='error'>
+          {touched ? error : ''}
         </div>
-      )
-    }
+      </div>
+    )
+  }
+  onSubmit(values){
+    console.log('onSubmit NewAlert form', this.props);
+    this.props.updateAlert({...values})
+    this.props.closeModal()
+  }
+  onCancel(){
+    this.props.closeModal()
   }
 
   render() {
+    const { handleSubmit } = this.props
+
     return (
       <div>
-        {this.alertDetail()}
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+          <Field
+            label='Alert Type'
+            name='alert_type'
+            component={this.renderField}
+          />
+          <Field
+            label='Title'
+            name='title'
+            component={this.renderField}
+          />
+          <Field
+            label='Photo'
+            name='photo_url'
+            component={this.renderField}
+          />
+          <button type="submit">
+            SAVE CHANGES
+          </button>
+          <button onClick={this.onCancel.bind(this)}>Cancel</button>
+          <button className="alert-delete" onClick={() => this.props.deleteAlert(alert._id)}>Delete Alert</button>
+        </form>
       </div>
     )
   }
 }
 
+function validate(values){
+  const errors = {}
+
+  if(!values.title){
+    errors.title = "Enter a title"
+  }
+  // if errors is empty then form is ok to SUBMIT
+  // if errors has any properties than it isn't
+  return errors
+}
+
+const afterSubmit = (result, dispatch) => dispatch(reset('EditAlertForm'))
+
 function mapStateToProps(state){
   return {
-    alerts: state.alerts
+    alerts: state.alerts,
   }
 }
 
-export default connect(mapStateToProps, { closeModal, deleteAlert })(AlertDetail)
+export default reduxForm({
+  validate,
+  form: 'EditAlertForm',
+  onSubmitSuccess: afterSubmit
+})(
+  connect(mapStateToProps, { deleteAlert, closeModal } )(AlertDetail)
+)
