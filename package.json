@@ -30,7 +30,7 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "1.1.4",
     "redux": "^3.7.2",
-    "redux-form": "^7.3.0",
+    "redux-form": "^7.4.0",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0"
   },
