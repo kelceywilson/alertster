@@ -22,8 +22,8 @@ export const UNAUTH_USER = 'UNAUTH_USER'
 export const UPDATE_TOKEN = 'UPDATE_TOKEN'
 export const UPLOAD_FILE = 'UPLOAD_FILE'
 
-const ROOT_URL = 'http://localhost:5000'
-// const ROOT_URL = 'https://mighty-castle-33351.herokuapp.com'
+// const ROOT_URL = 'http://localhost:5000'
+const ROOT_URL = 'https://mighty-castle-33351.herokuapp.com'
 
 // ALERT ACTIONS //
 export function addNewAlert(values){

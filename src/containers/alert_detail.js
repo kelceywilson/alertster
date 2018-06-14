@@ -64,9 +64,9 @@ class AlertDetail extends Component {
           <button type="submit">
             SAVE CHANGES
           </button>
-          <button onClick={this.onCancel.bind(this)}>Cancel</button>
-          <button className="alert-delete" onClick={() => this.props.deleteAlert(alert._id)}>Delete Alert</button>
         </form>
+          <button onClick={this.onCancel.bind(this)}>Cancel</button>
+          <button className="alert-delete" onClick={() => this.props.deleteAlert(this.props.alerts.alert._id)}>Delete Alert</button>
       </div>
     )
   }
