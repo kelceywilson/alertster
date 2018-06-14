@@ -15,7 +15,7 @@ class Signup extends Component {
         <label>{field.label}</label>
         <input
           className={className}
-          type='text'
+          type={field.type}
           {...field.input}
         />
         <div className='error'>
@@ -52,16 +52,21 @@ class Signup extends Component {
           <Field
             label='Email'
             name='email'
+            type='email'
             component={this.renderField}
           />
           <Field
             label='Password'
             name='password'
+            type='password'
+            placeholder='Enter a password'
             component={this.renderField}
           />
           <Field
             label='Confirm Password'
             name='passwordConfirm'
+            type='password'
+            placeholder='Confirm your password'
             component={this.renderField}
           />
           {this.renderAlert()}
