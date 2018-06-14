@@ -15,16 +15,18 @@ class Menu extends Component {
             <img className='icon' src='./user.png' alt='profile' />
           </NavLink>
           <NavLink className='smush-left' to="/signout">
-            <img className='icon' src='./arrow.png' alt='signout' />
+            <img className='icon' src='./signout.png' alt='signout' />
           </NavLink>
         </div>
       )
     } else {
       return (
         <div className="nav">
-          <NavLink exact to="/">HOME</NavLink>
-          <NavLink to="/signin">SIGN IN</NavLink>
-          <NavLink to="/signup">SIGN UP</NavLink>
+          <NavLink exact to="/">
+            <img className='icon' src='./home.png' alt='home' />
+          </NavLink>
+          <NavLink to="/signin"><img className='icon' src='./signin.png' alt='home' /></NavLink>
+          <NavLink to="/signup"><img className='icon' src='./signup.png' alt='home' /></NavLink>
         </div>
       )
     }
