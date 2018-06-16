@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Field, reduxForm, reset } from 'redux-form'
 import { connect } from 'react-redux'
+import FileUploader from './file_uploader'
 import { closeModal, deleteAlert } from '../actions/index'
 
 class AlertDetail extends Component {
@@ -16,7 +17,6 @@ class AlertDetail extends Component {
   renderField(field){
     const { meta: { touched, error } } = field
     const className = touched && error ? 'error' : ''
-    console.log(field);
     return (
       <div>
         <label>{field.label}</label>
@@ -59,7 +59,7 @@ class AlertDetail extends Component {
           <Field
             label='Photo'
             name='photo_url'
-            component={this.renderField}
+            component={FileUploader}
           />
           <button type="submit">
             SAVE CHANGES
@@ -87,7 +87,7 @@ const afterSubmit = (result, dispatch) => dispatch(reset('EditAlertForm'))
 
 function mapStateToProps(state){
   return {
-    alerts: state.alerts,
+    alerts: state.alerts
   }
 }
 
