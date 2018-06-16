@@ -15,7 +15,6 @@ export default function(state = {list: [], alert: {}}, action){
   case GET_ALL_ALERTS:
     return {list: _.mapKeys(action.payload.data, '_id')}
   case GET_ONE_ALERT:
-    console.log(action.payload.data);
     return {...state, alert: action.payload.data}
   default:
     return state

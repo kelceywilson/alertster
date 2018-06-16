@@ -7,7 +7,6 @@ export default function(state = {open: false}, action){
   case DELETE_ALERT:
     return {open: false}
   case OPEN_MODAL:
-    console.log('OPEN_MODAL', action.payload);
     return {...action.payload, open: true}
   default:
     return state
