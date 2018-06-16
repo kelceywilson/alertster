@@ -26,7 +26,8 @@ class AlertList extends Component {
               this.props.openModal(
                 {
                   whichModal: 'alertDetailModal',
-                  editAlertId: alert._id
+                  editAlertId: alert._id,
+                  photo_url: alert.photo_url
                 }
               )
             })
@@ -97,7 +98,8 @@ function mapStateToProps(state){
   return {
     alerts: state.alerts,
     filtered: state.filtered,
-    open: state.open
+    open: state.open,
+    photo_url: state.file.photo_url
   }
 }
 
