@@ -14,11 +14,10 @@ This app interfaces with alertsAPI, which can be found here:
 https://github.com/kelceywilson/alertsAPI
 
 ### TODO
-- Make alertDetail editable
 - Show 'Delete Alert' button only on alerts created by the current user
+- Make alertDetail editable
 - Fix type selector so that type must be selected to submit new alert
 - Add user license to all pages
-- Deploy alertster to Heroku
 - Split earlier commits
 - Write tests for alertsAPI
 - write some tests for alertster
