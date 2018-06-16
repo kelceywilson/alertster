@@ -32,7 +32,7 @@ class Signup extends Component {
     })
   }
 
-  renderAlert(){
+  renderError(){
     if(this.props.errorMessage){
       return (
         <div className='error'>oops - {this.props.errorMessage}</div>
@@ -69,7 +69,7 @@ class Signup extends Component {
             placeholder='Confirm your password'
             component={this.renderField}
           />
-          {this.renderAlert()}
+          {this.renderError()}
           <button type="submit">Sign Up</button>
           <button>Cancel</button>
         </form>
