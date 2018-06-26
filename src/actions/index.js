@@ -22,8 +22,8 @@ export const UNAUTH_USER = 'UNAUTH_USER'
 export const UPDATE_TOKEN = 'UPDATE_TOKEN'
 export const UPLOAD_FILE = 'UPLOAD_FILE'
 
-const ROOT_URL = 'http://localhost:5000'
-// const ROOT_URL = 'https://mighty-castle-33351.herokuapp.com'
+// const ROOT_URL = 'http://localhost:5000'
+const ROOT_URL = 'https://mighty-castle-33351.herokuapp.com'
 
 // ALERT ACTIONS //
 export function addNewAlert(values){
@@ -167,6 +167,7 @@ export function signinUser({ email, password }, callback){
         // - update state to indicate user is authenticated
         dispatch({ type: AUTH_USER })
         // - save the jwt token
+        console.log(response);
         console.log(response.data.token)
         // maybe put in if(response.data.token) to prevent
         // navigation if response doesn't include token?
@@ -194,6 +195,7 @@ export function signupUser({ email, password }){
         // - update state to indicate user is authenticated
         dispatch({ type: AUTH_USER })
         // - save the jwt token
+        console.log(response)
         console.log(response.data.token)
         localStorage.setItem('token', response.data.token)
         // - redirect to the route desired
