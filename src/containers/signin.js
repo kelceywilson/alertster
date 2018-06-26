@@ -74,7 +74,7 @@ class Signin extends Component {
 
 function validate(values){
   const errors = {}
-
+  console.log(values);
   if(!values.email){
     errors.email = "Enter email"
   }

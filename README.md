@@ -10,10 +10,11 @@ alertster will make it easy for users to post and view a wide variety of adverti
 `> npm start`
 
 ## alertsAPI
-This app interfaces with alertsAPI, which can be found here:
+This app partners with alertsAPI, which can be found here:
 https://github.com/kelceywilson/alertsAPI
 
 ### TODO
+- Create user profile page
 - Show 'Delete Alert' button only on alerts created by the current user
 - Make alertDetail editable
 - Fix type selector so that type must be selected to submit new alert
